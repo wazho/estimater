@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -30,7 +30,9 @@ jobs:
 
       # 4. 建置 (Vite)
       - name: Build Project
-        run: yarn build
+        run: |
+          export GITHUB_PAGES=true
+          yarn build
 
       # 5. 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
